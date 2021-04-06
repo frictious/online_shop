@@ -1,0 +1,24 @@
+{
+  "name": "online_shop",
+  "version": "1.0.0",
+  "description": "An online shop for viewing, and buying products",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/frictious/online_shop.git"
+  },
+  "author": "Friction",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/frictious/online_shop/issues"
+  },
+  "homepage": "https://github.com/frictious/online_shop#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1"
+  }
+}
