@@ -65,7 +65,7 @@ function isLoggedIn(req, res, next){
 };
 
 //ROUTES
-router.get("/", isLoggedIn, (req, res) => {
+router.get("/", (req, res) => {
     res.render("admin/index", {title : "Admin Homepage"});
     // res.send("<h1>WELCOME TO THE ADMIN PAGE</h1>");
 });
