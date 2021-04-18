@@ -34,15 +34,15 @@
             <div class="logo text-uppercase"><strong class="text-primary">LOGIN</strong></div>
             <form method="POST" action="/admin/login" class="form-validate">
               <div class="form-group-material">
-                <input id="login-username" type="text" name="loginUsername" required data-msg="Please enter your username" class="input-material">
-                <label for="login-username" class="label-material">Username</label>
+                <input id="login-username" type="email" name="email" required data-msg="Please enter your username" class="input-material">
+                <label for="login-username" class="label-material">Email</label>
               </div>
               <div class="form-group-material">
-                <input id="login-password" type="password" name="loginPassword" required data-msg="Please enter your password" class="input-material">
+                <input id="login-password" type="password" name="password" required data-msg="Please enter your password" class="input-material">
                 <label for="login-password" class="label-material">Password</label>
               </div>
               <div class="form-group text-center"><button id="login" class="btn btn-primary">Login</button></div>
-            </form><a href="#" class="forgot-pass">Forgot Password?</a><small>Do not have an account? </small><a href="register.html" class="signup">Signup</a>
+            </form><a href="#" class="forgot-pass">Forgot Password?</a><small>Do not have an account? </small><a href="/admin/register" class="signup">Signup</a>
           </div>
           <!--<div class="copyrights text-center">
             <p>Design by <a href="https://bootstrapious.com/p/bootstrap-4-dashboard" class="external">Bootstrapious</a></p>-->
