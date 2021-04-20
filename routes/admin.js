@@ -2,12 +2,13 @@ const   express                 = require("express"),
         passport                = require("passport"),
         mongoose                = require("mongoose"),
         bcrypt                  = require("bcryptjs"),
+        productController       = require("../controller/product"),
+        Product                 = require("../models/products"),
         crypto                  = require("crypto"),
         path                    = require("path"),
         multer                  = require("multer"),
         GridFsStorage           = require("multer-gridfs-storage"),
         Grid                    = require("gridfs-stream"),
-        User                    = require("../models/user"),
         adminRegistration       = require("../controller/adminRegistration");
 
 const router = express.Router();
@@ -98,18 +99,54 @@ router.get("/logout", (req, res) => {
 });
 
 // PRODUCTS ROUTE
-router.get("/products", (req, res) => {
-    res.render("admin/products", {title : "Products Page"});
+router.get("/products", isLoggedIn, (req, res) => {
+    Product.find({})
+    .then(products => {
+        if(products){
+            res.render("admin/products", {title : "Products Page", products: products});
+        }
+    })
+    .catch(err => {
+        if(err){
+            console.log(err);
+            res.redirect("back");
+        }
+    });
 });
 
 // ADD PRODUCT FORM PAGE
-router.get("/products/add", (req, res) => {
-    res.send("<h1>ADDING PRODUCTS FORM PAGE</h1>");
+router.get("/products/add", isLoggedIn, (req, res) => {
+    res.render("admin/addProduct", {title : "Adding pro"});
 });
 
 // ADD PRODUCT FORM LOGIC
-router.post("/products", cpUpload, (req, res) => {
-    res.send("<h1>WELCOME TO THE PRODUCTS ADD PAGE</h1>");
+router.post("/products/add", cpUpload, (req, res) => {
+    Product.create({
+        name : req.body.name,
+        description: req.body.description,
+        cost: req.body.cost,
+        quantity: req.body.quantity,
+        creator: req.user._id,
+        category: req.body.category,
+        front: req.files["front"][0].filename,
+        back: req.files["back"][0].filename,
+        left: req.files["left"][0].filename,
+        right: req.files["right"][0].filename,
+        inside: req.files["inside"][0].filename
+    })
+    .then(program => {
+        if(program){
+            // req.flash("error", "DEPARTMENT EXISTS");
+            console.log("PRODUCT ADDED SUCCESSFULLY");
+            res.redirect("/admin/products/add");
+        }
+    })
+    .catch(err => {
+        if(err){
+            console.log(err);
+            res.redirect("/admin/products/add");
+        }
+    });
 });
 
 // VIEW SINGLE PRODUCT

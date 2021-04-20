@@ -1,3 +1,4 @@
+// Slick js jquery codes
 $(document).ready(function() {
     $('.slider-img').slick({
         infinite: true,
@@ -16,3 +17,9 @@ $('.autoplay').slick({
     autoplaySpeed: 2000,
     arrows: false
 });
+// End of slick
+
+//Summernote
+$(document).ready(function() {
+    $('#summernote').summernote();
+  });

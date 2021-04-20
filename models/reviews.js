@@ -5,8 +5,8 @@ const reviewSchema = new mongoose.Schema({
     email: String,
     review: String,
     created: {
-        type: Date(),
-        default: Date.now()
+        type: Date,
+        default: Date.now
     },
     productReviewed: String
 });

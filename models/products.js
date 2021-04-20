@@ -20,8 +20,13 @@ const productSchema         = new mongoose.Schema({
     },
     created: {
         type: Date,
-        default: Date.now()
-    }
+        default: Date.now
+    },
+    front: String,
+    back: String,
+    left: String,
+    right: String,
+    inside: String
 });
 
 module.exports = mongoose.model("Products", productSchema);
